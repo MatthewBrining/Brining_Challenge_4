@@ -1,0 +1,21 @@
+.info-bar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-interface {
+    margin: 100px;
+}
+
+.user-interface ul {
+    list-style: none;
+}
+
+.user-interface ul li {
+    background-color: navy;
+    margin-top: 5px;
+    font-size: 22px;
+    color: white;
+    border-radius: 5px;
+    padding:0 50% ;
+}
