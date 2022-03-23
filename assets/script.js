@@ -2,9 +2,10 @@
 
 const startTime = 80;
 let questionNumber = 0;
+let answerNumber = 0;
 let time = startTime;
 
-const questions = ["Commonly used data types do NOT include:","The condition in an 'If/else' statement is enclosed with _____","Arrays in javascript can be used to store ______","String Values must be stored in _____ when being assigned to variables.","A very useful tool during development and debugging for printing content to the debugger is:","All Done!","High Scores"];
+const questions = ["Commonly used data types do NOT include:","The condition in an 'If/else' statement is enclosed with _____","Arrays in javascript can be used to store ______","String Values must be stored in _____ when being assigned to variables.","A very useful tool during development and debugging for printing content to the debugger is:"];
 
 const answersOne = ["1. Strings","1. Quotes","1. Numbers and strings","1. Commas","1. Javascript"];
 
@@ -28,6 +29,17 @@ const answerThreeButton = document.getElementById('answerThreeButton');
 
 const answerFourButton = document.getElementById('answerFourButton');
 
+const timer = document.getElementById('timer');
+
+//list elements - not the buttons
+const answerOne = document.getElementById('answerOne');
+
+const answerTwo = document.getElementById('answerTwo');
+
+const answerThree = document.getElementById('answerThree');
+
+const answerFour = document.getElementById('answerFour');
+
 
 
 startButton.addEventListener('click',()=>{
@@ -36,16 +48,24 @@ startButton.addEventListener('click',()=>{
 });
 
 answerOneButton.addEventListener('click',quiz);
-answerTwoButton.addEventListener('click', quiz);
-answerThreeButton.addEventListener('click', quiz);
-answerFourButton.addEventListener('click', quiz);
+answerTwoButton.addEventListener('click',quiz);
+answerThreeButton.addEventListener('click',quiz);
+answerFourButton.addEventListener('click',quiz);
+
+//NOT WORKING?
+
+//const incorrectAnswer = document.getElementsByClassName('incorrect');
 
 
+//incorrectAnswer.addEventListener('click',wrongAnswer);
 
+//function wrongAnswer(){
+//    time = time - 10;
+//}
 
 
 function quiz () {
-
+    if (questionNumber < questions.length) {
 //hide start button - unhide other buttons
 startButton.classList.add('hide');
 answerOneButton.classList.remove('hide');
@@ -56,6 +76,7 @@ answerFourButton.classList.remove('hide');
 
 // page setup
 questionEl.textContent = (questions[questionNumber]);
+
 answerOneButton.textContent = (answersOne[questionNumber]);
 answerTwoButton.textContent = (answersTwo[questionNumber]);
 answerThreeButton.textContent =(answersThree[questionNumber]);
@@ -63,7 +84,40 @@ answerFourButton.textContent = (answersFour[questionNumber]);
 
 questionNumber++;
 
+    }
+
+    else {
+        const score = time;
+        questionEl.textContent = ("All Done!")
+        answerOneButton.classList.add('hide');
+        answerTwoButton.classList.add('hide');
+        answerThreeButton.classList.add('hide');
+        answerFourButton.classList.add('hide');
+
+        timer.classList.add('hide');
+
+        answerOne.textContent = ('Your score is: ' + score);
+        
+        answerTwo.innerHTML = ("<form id='entryForm'><label for='initials'>Initials</label><br><input type='text' id='initials' name='initials'><input type='submit'></form>")
+    } 
+
+    if (answerNumber=2){
+        answerThreeButton.classList.add('incorrect');
+        answerFourButton.classList.remove('incorrect');
+    }
+    
+    if (answerNumber = 3){
+        answerThreeButton.classList.remove('incorrect');
+        answerFourButton.classList.add('incorrect');
+    }
+    
+    if (answerNumber = 4){
+        answerThreeButton.classList.add('incorrect');
+        answerFourButton.classList.remove('incorrect');
+    }
+    answerNumber++;
 }
+
 
 function timeStart() {
 
@@ -77,6 +131,6 @@ function countdown() {
     time --;
     }
 }
-
 }
+
 

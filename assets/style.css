@@ -15,12 +15,7 @@
 }
 
 .user-interface ul li {
-    background-color: navy;
-    margin-top: 5px;
     font-size: 22px;
-    color: white;
-    border-radius: 5px;
-    padding:0 50% ;
 }
 
 .hide {
@@ -31,5 +26,7 @@
     background-color: navy;
     color: white;
     font-size: 22px;
+    width: 200px;
+    margin-top: 10px;
 
 }
